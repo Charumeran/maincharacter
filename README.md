@@ -6,13 +6,18 @@
 - **目標**: 建設業界のDX化支援を通じた顧客獲得（月間10件の問い合わせ目標）
 - **主要機能**: コーポレート情報発信、事例紹介、お問い合わせ受付
 
-## 現在完了している機能
+## 技術スタック
+- **フレームワーク**: Next.js 14 + TypeScript
+- **スタイリング**: CSS Modules / Global CSS
+- **デプロイ**: Vercel / Cloudflare Pages / その他ホスティングサービス
 
-### ✅ 実装済みページ
+## 実装済みページ
+
+### ✅ メインページ
 1. **トップページ** (`/`)
    - ヒーローセクション（メインメッセージ、CTA）
    - 選ばれる理由（3つの特徴）
-   - 実績数字（統計カウンターアニメーション付き）
+   - 実績数字（統計表示）
    - 主要サービス紹介
 
 2. **会社概要** (`/company`)
@@ -35,11 +40,6 @@
    - バリデーション機能
    - 送信成功・エラーハンドリング
 
-### ✅ 法務ページ
-- **プライバシーポリシー** (`/privacy`)
-- **利用規約** (`/terms`)  
-- **特定商取引法に基づく表記** (`/legal`)
-
 ### ✅ API機能
 - **お問い合わせAPI** (`POST /api/contact`)
   - フォームバリデーション
@@ -54,59 +54,100 @@
 - クッキー同意バナー実装
 - レスポンシブデザイン完全対応
 
-## 公開URL
-- **開発環境**: https://3000-ivr9v6ebf5ykblnozumm9-6532622b.e2b.dev
-- **トップページ**: https://3000-ivr9v6ebf5ykblnozumm9-6532622b.e2b.dev/
-- **会社概要**: https://3000-ivr9v6ebf5ykblnozumm9-6532622b.e2b.dev/company
-- **事例紹介**: https://3000-ivr9v6ebf5ykblnozumm9-6532622b.e2b.dev/cases
-- **メンバー**: https://3000-ivr9v6ebf5ykblnozumm9-6532622b.e2b.dev/members
-- **お問い合わせ**: https://3000-ivr9v6ebf5ykblnozumm9-6532622b.e2b.dev/contact
+## 開発環境のセットアップ
+
+### 必要要件
+- Node.js 18.0.0 以上
+- npm または yarn
+
+### インストール手順
+
+```bash
+# 依存関係のインストール
+npm install
+
+# 開発サーバーの起動（ポート3000）
+npm run dev
+
+# 本番ビルド
+npm run build
+
+# 本番サーバーの起動
+npm start
+```
+
+### 開発サーバー
+開発サーバー起動後、以下のURLでアクセスできます：
+- **ローカル**: http://localhost:3000
+- **トップページ**: http://localhost:3000/
+- **会社概要**: http://localhost:3000/company
+- **事例紹介**: http://localhost:3000/cases
+- **メンバー**: http://localhost:3000/members
+- **お問い合わせ**: http://localhost:3000/contact
+
+## プロジェクト構造
+
+```
+maincharacterinchp/
+├── components/          # Reactコンポーネント
+│   ├── Header.tsx      # ヘッダーコンポーネント
+│   └── Footer.tsx      # フッターコンポーネント
+├── pages/              # Next.jsページ
+│   ├── _app.tsx        # アプリケーションルート
+│   ├── _document.tsx   # HTMLドキュメント設定
+│   ├── index.tsx       # トップページ
+│   ├── company.tsx     # 会社概要
+│   ├── cases.tsx       # 事例紹介
+│   ├── members.tsx     # メンバー紹介
+│   ├── contact.tsx     # お問い合わせ
+│   └── api/            # APIルート
+│       └── contact.ts  # お問い合わせAPI
+├── styles/             # スタイルシート
+│   └── globals.css     # グローバルCSS
+├── public/             # 静的ファイル
+├── next.config.js      # Next.js設定
+├── tsconfig.json       # TypeScript設定
+└── package.json        # プロジェクト依存関係
+
+```
 
 ## データアーキテクチャ
-- **ストレージ**: 静的ファイル（Cloudflare Workers）
-- **API**: Honoフレームワーク（サーバーレス）
+- **フロントエンド**: Next.js 14 (React 18)
+- **型安全性**: TypeScript
+- **スタイリング**: CSS（カスタムプロパティベース）
+- **API**: Next.js API Routes
 - **デザインシステム**: カスタムCSS（青紫色ベース、テクノロジー感）
-- **フロントエンド**: Vanilla JavaScript + Font Awesome
 
-## 技術スタック
-- **バックエンド**: Hono + TypeScript
-- **フロントエンド**: HTML/CSS/JavaScript
-- **デプロイ**: Cloudflare Pages
-- **開発ツール**: Vite, Wrangler
-- **プロセス管理**: PM2
+## デプロイメント
 
-## ユーザーガイド
+### Vercelへのデプロイ（推奨）
+```bash
+# Vercel CLIのインストール
+npm i -g vercel
 
-### サイトの主要機能
-1. **情報閲覧**: 会社情報、サービス内容、導入事例の確認
-2. **問い合わせ**: 詳細フォームでの相談申し込み
-3. **事例研究**: 他社の成功事例参考
-4. **メンバー理解**: チームの専門性確認
+# デプロイ
+vercel
+```
 
-### お問い合わせ方法
-- **Webフォーム**: 最も推奨（詳細な情報収集可能）
-- **メール**: info@main-character.co.jp
-- **営業時間**: 平日 9:00-18:00
-
-## デプロイメント状況
-- **プラットフォーム**: Cloudflare Pages (予定)
-- **現在の状態**: ✅ 開発完了、テスト済み
-- **技術スタック**: Hono + TypeScript + Cloudflare Workers
-- **最終更新**: 2024年12月（初期リリース）
+### その他のプラットフォーム
+- **Netlify**: `npm run build` の出力を `.next` ディレクトリから配信
+- **Cloudflare Pages**: Next.js対応のビルド設定を使用
+- **自前サーバー**: `npm run build && npm start` で起動
 
 ## 今後の推奨改善点
 
 ### 即座に実装可能
-1. **Google Analytics ID設定**: 実際のGA IDに置換
+1. **Google Analytics ID設定**: 実際のGA IDに置換（_document.tsx内）
 2. **連絡先情報更新**: 実際の電話番号設定
-3. **ロゴ・画像追加**: ブランドロゴとイメージ画像
-4. **お問い合わせメール送信**: 実際のメール送信機能
+3. **ファビコン・ロゴ追加**: public/配下に配置
+4. **お問い合わせメール送信**: 実際のメール送信機能（SendGrid、Resendなど）
 
 ### 中期的な拡張
 1. **ブログ機能**: 週3回更新予定のコンテンツマーケティング
 2. **詳細事例ページ**: 各導入事例の個別詳細ページ
 3. **料金プラン表示**: サービス別の明確な料金体系
 4. **顧客の声セクション**: 実際の顧客レビュー・推薦文
+5. **プライバシーポリシー、利用規約、特定商取引法ページ**: 法的に必要なページの追加
 
 ### 長期的な発展
 1. **多言語対応**: 英語版サイト（海外展開時）
@@ -114,14 +155,15 @@
 3. **資料ダウンロード**: 会社案内、サービス資料PDF
 4. **オンライン見積もり**: 簡易見積もりシミュレーション
 
-## 開発・運用情報
-- **リポジトリ**: `/home/user/webapp`
-- **ビルドコマンド**: `npm run build`
-- **開発サーバー**: `pm2 start ecosystem.config.cjs`
-- **テストコマンド**: `curl http://localhost:3000`
+## 会社情報
+
+**会社名**: 株式会社main character
+**ブランド名**: 建設テックパートナーズ
+**代表者**: 北島壮馬
+**所在地**: 〒814-0001 福岡県福岡市早良区百道2-15-1
+**Email**: info@main-character.co.jp
+**営業時間**: 平日 9:00-18:00
 
 ---
 
-**Contact**: 株式会社main character - 建設テックパートナーズ  
-**Email**: info@main-character.co.jp  
-**Location**: 〒814-0001 福岡県福岡市早良区百道2-15-1
+© 2024 株式会社main character. All rights reserved.
