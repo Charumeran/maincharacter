@@ -2,9 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/company": "pages/company.js",
-  "/cases": "pages/cases.js",
   "/members": "pages/members.js",
-  "/contact": "pages/contact.js"
+  "/": "pages/index.js",
+  "/contact": "pages/contact.js",
+  "/company": "pages/company.js",
+  "/cases": "pages/cases.js"
 }

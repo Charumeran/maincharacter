@@ -104,11 +104,7 @@ export default function Document() {
             </a>
           </p>
           <button
-            onClick={() => {
-              const banner = document.getElementById('cookie-banner');
-              if (banner) banner.style.display = 'none';
-              localStorage.setItem('cookies-accepted', 'true');
-            }}
+            id="accept-cookie-button"
             style={{
               background: 'var(--primary-color)',
               color: 'white',
@@ -125,8 +121,26 @@ export default function Document() {
         <script
           dangerouslySetInnerHTML={{
             __html: `
+              function acceptCookies() {
+                var banner = document.getElementById('cookie-banner');
+                if (banner) {
+                  banner.style.display = 'none';
+                }
+                localStorage.setItem('cookies-accepted', 'true');
+              }
+
+              // バナーの表示チェック
               if (!localStorage.getItem('cookies-accepted')) {
-                document.getElementById('cookie-banner').style.display = 'block';
+                var banner = document.getElementById('cookie-banner');
+                if (banner) {
+                  banner.style.display = 'block';
+                }
+              }
+
+              // ボタンのイベントリスナーを追加
+              var button = document.getElementById('accept-cookie-button');
+              if (button) {
+                button.addEventListener('click', acceptCookies);
               }
             `,
           }}
