@@ -296,38 +296,6 @@ body {
   opacity: 0.9;
 }
 
-/* ===== ミッション・ビジョン ===== */
-.mission-vision-section {
-  background: var(--gradient-accent);
-  color: white;
-  padding: 4rem 2rem;
-  margin: 4rem 0;
-}
-
-.mission-vision-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-.mission-vision-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.mission-vision-card h3 {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-}
-
-.mission-vision-card p {
-  line-height: 1.8;
-  opacity: 0.95;
-}
-
 /* ===== 会社情報セクション ===== */
 .company-info-section table {
   width: 100%;
@@ -581,20 +549,4 @@ body {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-}
-
-/* ===== アニメーション ===== */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  animation: fadeIn 0.6s ease-out;
 }
