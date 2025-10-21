@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
+import PageHero from '@/components/PageHero';
 import Footer from '@/components/Footer';
 import { client, Blog } from '@/lib/microcms';
 import styles from '@/styles/Blog.module.css';
@@ -27,15 +28,13 @@ export default function BlogList({ blogs }: Props) {
       </Head>
 
       <Header />
+      <PageHero
+        title="ブログ"
+        subtitle="建設業界のDX化や生産性向上に関する情報を発信しています"
+      />
 
       <main className={styles.blogMain}>
         <div className={styles.container}>
-          <div className={styles.header}>
-            <h1 className={styles.title}>ブログ</h1>
-            <p className={styles.description}>
-              建設業界のDX化や生産性向上に関する情報を発信しています
-            </p>
-          </div>
 
           {blogs.length === 0 ? (
             <div className={styles.empty}>
