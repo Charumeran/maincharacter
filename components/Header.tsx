@@ -48,6 +48,7 @@ export default function Header() {
           <li><Link href="/" onClick={closeMenu}>ホーム</Link></li>
           <li><Link href="/company" onClick={closeMenu}>会社概要</Link></li>
           <li><Link href="/cases" onClick={closeMenu}>事例紹介</Link></li>
+          <li><Link href="/blog" onClick={closeMenu}>ブログ</Link></li>
           <li><Link href="/members" onClick={closeMenu}>メンバー</Link></li>
           <li><Link href="/contact" onClick={closeMenu}>お問い合わせ</Link></li>
         </ul>

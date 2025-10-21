@@ -4,9 +4,6 @@ export default function Document() {
   return (
     <Html lang="ja">
       <Head>
-        {/* Viewport for mobile responsiveness */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-
         {/* Google Fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -58,22 +55,6 @@ export default function Document() {
               industry: '建設業DX支援',
               numberOfEmployees: '2-10',
             }),
-          }}
-        />
-
-        {/* Google Analytics */}
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'GA_MEASUREMENT_ID');
-            `,
           }}
         />
       </Head>

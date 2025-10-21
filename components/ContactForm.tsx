@@ -50,7 +50,7 @@ export default function ContactForm() {
         setStatus('error');
         setErrorMessage(data.error || 'エラーが発生しました');
       }
-    } catch (error) {
+    } catch {
       setStatus('error');
       setErrorMessage('送信に失敗しました。もう一度お試しください。');
     }

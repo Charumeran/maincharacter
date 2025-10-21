@@ -1,0 +1,145 @@
+.blogMain {
+  min-height: 100vh;
+  padding: 120px 20px 80px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  color: white;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.empty {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 12px;
+  color: #666;
+  font-size: 18px;
+}
+
+.blogList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.blogCard {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.blogCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.eyecatch {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.eyecatch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.blogCard:hover .eyecatch img {
+  transform: scale(1.05);
+}
+
+.content {
+  padding: 24px;
+}
+
+.blogTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  line-height: 1.6;
+  color: #333;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.category {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.date {
+  color: #999;
+  font-size: 14px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .blogMain {
+    padding: 100px 16px 60px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .blogList {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .eyecatch {
+    height: 200px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .blogTitle {
+    font-size: 18px;
+  }
+}

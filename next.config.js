@@ -9,7 +9,7 @@ const nextConfig = {
 
   // 画像最適化の設定
   images: {
-    domains: [],
+    domains: ['images.microcms-assets.io'],
     unoptimized: false,
   },
 
