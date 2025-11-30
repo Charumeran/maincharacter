@@ -87,8 +87,8 @@ ${body.message}
     `.trim();
 
     // Resendでメール送信
-    const { error } = await resend.emails.send({
-      from: 'お問い合わせフォーム <onboarding@resend.dev>',
+    const { data, error } = await resend.emails.send({
+      from: 'お問い合わせフォーム <noreply@kensetsu-tech.com>',
       to: [toEmail],
       replyTo: body.email,
       subject: `【お問い合わせ】${body.company} ${body.name}様より`,
@@ -97,8 +97,11 @@ ${body.message}
 
     if (error) {
       console.error('Resend error:', error);
-      return res.status(500).json({ error: 'メール送信に失敗しました' });
+      console.error('Resend error details:', JSON.stringify(error, null, 2));
+      return res.status(500).json({ error: `メール送信に失敗しました: ${error.message}` });
     }
+
+    console.log('Resend success:', data);
 
     console.log('Contact form submission sent:', {
       company: body.company,

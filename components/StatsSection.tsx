@@ -1,9 +1,8 @@
 export default function StatsSection() {
   const stats = [
-    { number: '50+', label: '導入企業数' },
-    { number: '85h', label: '業務効率化時間（月）' },
-    { number: '24h', label: '平均サポート時間' },
-    { number: '100%', label: '顧客満足度' }
+    { number: '7', label: '導入企業数' },
+    { number: '20h', label: '業務効率化時間（月・一人当たり）' },
+    { number: '24h', label: 'サポート時間' },
   ];
 
   return (

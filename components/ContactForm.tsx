@@ -74,32 +74,60 @@ export default function ContactForm() {
           {status === 'success' && (
             <div
               style={{
-                background: '#d1fae5',
-                color: '#065f46',
-                padding: '1rem',
-                borderRadius: '0.5rem',
-                marginBottom: '2rem',
+                textAlign: 'center',
+                padding: '3rem 2rem',
               }}
             >
-              お問い合わせありがとうございます。3営業日以内にご連絡いたします。
+              <div
+                style={{
+                  width: '80px',
+                  height: '80px',
+                  background: 'linear-gradient(135deg, #10b981, #059669)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 1.5rem',
+                }}
+              >
+                <i className="fas fa-check" style={{ fontSize: '2.5rem', color: 'white' }}></i>
+              </div>
+              <h3 style={{ color: '#065f46', marginBottom: '1rem', fontSize: '1.5rem' }}>
+                送信完了しました
+              </h3>
+              <p style={{ color: '#1f2937', marginBottom: '0.5rem', fontSize: '1.1rem' }}>
+                お問い合わせありがとうございます。
+              </p>
+              <p style={{ color: '#6b7280', marginBottom: '2rem' }}>
+                3営業日以内にご連絡いたします。
+              </p>
+              <button
+                type="button"
+                className="cta-button"
+                onClick={() => setStatus('idle')}
+              >
+                新しいお問い合わせ
+              </button>
             </div>
           )}
 
-          {status === 'error' && (
-            <div
-              style={{
-                background: '#fee2e2',
-                color: '#991b1b',
-                padding: '1rem',
-                borderRadius: '0.5rem',
-                marginBottom: '2rem',
-              }}
-            >
-              {errorMessage}
-            </div>
-          )}
+          {status !== 'success' && (
+            <>
+              {status === 'error' && (
+                <div
+                  style={{
+                    background: '#fee2e2',
+                    color: '#991b1b',
+                    padding: '1rem',
+                    borderRadius: '0.5rem',
+                    marginBottom: '2rem',
+                  }}
+                >
+                  {errorMessage}
+                </div>
+              )}
 
-          <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label className="form-label" htmlFor="company">
                 会社名 *
@@ -264,7 +292,9 @@ export default function ContactForm() {
                 {status === 'loading' ? '送信中...' : 'お問い合わせを送信'}
               </button>
             </div>
-          </form>
+              </form>
+            </>
+          )}
         </div>
       </div>
     </section>
