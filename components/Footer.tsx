@@ -29,7 +29,7 @@ export default function Footer() {
 
         <div className="footer-section">
           <h3>お問い合わせ</h3>
-          <p>メール: info@main-character.co.jp</p>
+          <p>メール: info@kensetsu-tech.com</p>
           <p>営業時間: 平日 9:00-18:00</p>
         </div>
       </div>

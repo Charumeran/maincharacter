@@ -3,7 +3,7 @@ export default function ContactInfo() {
     {
       icon: 'fas fa-envelope',
       title: 'メールでのお問い合わせ',
-      mainInfo: 'info@main-character.co.jp',
+      mainInfo: 'info@kensetsu-tech.com',
       subInfo: '24時間受付<br />3営業日以内にご返信いたします'
     },
     {

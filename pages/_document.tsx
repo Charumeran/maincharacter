@@ -44,7 +44,7 @@ export default function Document() {
                 '@type': 'ContactPoint',
                 telephone: '+81-92-xxx-xxxx',
                 contactType: 'customer service',
-                email: 'info@main-character.co.jp',
+                email: 'info@kensetsu-tech.com',
                 availableLanguage: 'Japanese',
               },
               foundingDate: '2025-06-01',

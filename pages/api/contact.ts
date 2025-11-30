@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { Resend } from 'resend';
 
 type ContactFormData = {
   company: string;
@@ -20,6 +21,8 @@ type SuccessResponse = {
 type ErrorResponse = {
   error: string;
 };
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(
   req: NextApiRequest,
@@ -46,14 +49,62 @@ export default async function handler(
       return res.status(400).json({ error: '有効なメールアドレスを入力してください' });
     }
 
-    // ここで実際にはメール送信やデータベース保存を行う
-    // 今回はログ出力のみ
-    console.log('Contact form submission:', {
+    const toEmail = process.env.CONTACT_EMAIL || 'info@kensetsu-tech.com';
+
+    // メール本文を作成
+    const emailContent = `
+新しいお問い合わせがありました。
+
+【会社名】
+${body.company}
+
+【お名前】
+${body.name}
+
+【役職】
+${body.position || '未入力'}
+
+【メールアドレス】
+${body.email}
+
+【電話番号】
+${body.phone || '未入力'}
+
+【ご検討中のサービス】
+${body.service}
+
+【ご予算】
+${body.budget || '未入力'}
+
+【導入時期】
+${body.timeline || '未入力'}
+
+【お問い合わせ内容】
+${body.message}
+
+---
+このメールは建設テックパートナーズのウェブサイトから自動送信されています。
+    `.trim();
+
+    // Resendでメール送信
+    const { error } = await resend.emails.send({
+      from: 'お問い合わせフォーム <onboarding@resend.dev>',
+      to: [toEmail],
+      replyTo: body.email,
+      subject: `【お問い合わせ】${body.company} ${body.name}様より`,
+      text: emailContent,
+    });
+
+    if (error) {
+      console.error('Resend error:', error);
+      return res.status(500).json({ error: 'メール送信に失敗しました' });
+    }
+
+    console.log('Contact form submission sent:', {
       company: body.company,
       name: body.name,
       email: body.email,
       service: body.service,
-      message: body.message,
       timestamp: new Date().toISOString(),
     });
 
